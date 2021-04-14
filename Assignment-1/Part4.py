@@ -3,12 +3,11 @@ class Node:
         self.value = value
         self.next = None
 
-    def push(self, value: int) -> None:
+    def push(self, node) -> None:
         """ Adds the node to the end of the list """
-        node_to_add = Node(value)
         while self.next != None:
             self = self.next
-        self.next = node_to_add
+        self.next = node
 
     def pop(self):
         """ Removes the last node at the end of the linked list, returns that data """
@@ -67,3 +66,49 @@ class Node:
                     # removes index element
                     node_before.next = self.next
                     self.next = None
+
+    def element_at(self, index: int):
+        """  Returns a pointer to the node at the index location in the list. 
+        If the node doesn’t exist at the index, return nil/null """
+        if (type(index) == int) and (index >= 0):
+            for i in range(index):
+                if self != None:
+                    self = self.next
+            if self is None:
+                return None
+            else:
+                return self
+    
+    def size(self):
+        """  Returns the length of the list. """
+        lenght_counter = 1
+        while self.next != None:
+            self = self.next
+            lenght_counter += 1
+        return lenght_counter
+
+    def print_list(self):
+        """ Returns a string representation of the linked list """
+        string_representation = ''
+        while self != None:
+            string_representation += str(self.value)
+            self = self.next
+        return string_representation
+
+    def has_cycle(self):
+        """ returns a boolean denoting whether a cycle exists """
+        copy_node = self
+        while copy_node.next != None: 
+            memory_location_string = str(copy_node)
+            print("copy ", copy_node.value)
+            while self.next != None:
+                self = self.next
+                print("node ", self.value)
+                #print("node    ", str(self))
+                #print("memory ", memory_location_string)
+                print(str(self) == memory_location_string)
+                if str(self) == memory_location_string:
+                    return True
+            copy_node = copy_node.next
+        return False
+
