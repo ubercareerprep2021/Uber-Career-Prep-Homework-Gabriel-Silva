@@ -11,8 +11,13 @@ class Node:
             self = self.next
         self.next = node
 
+
+ 1 2 3 4 5 null
+ null 5 4 3 2 1
+
+
     def reverse_list(self):
-    """ Function that reverses a linked list iteratively """
+        """ Function that reverses a linked list iteratively """
         before = None
         while(self is not None):
             # next from the actual node
