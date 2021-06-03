@@ -1,70 +1,52 @@
-class Node:
-    def __init__(self, key):
-        self.key = key
+class BinarySeaerchTreePhoneBook:
+    def __init__(self, number_phone_dict):
+        self.name = number_phone_dict['name']
+        self.phone_number = number_phone_dict["phoneNumber"]
         self.left = None
         self.right = None
 
-    def print(self):
-        print(self.key)
-        if self.right is not None:
-            self.right.print()
-        if self.left is not None:
-            self.left.print()
-            
-class ListPhoneBook:
-    def __init__(self):
-        self.list = list()
-
     def size(self) -> int:
-        return len(self.list)
+        counter = 1
+        if self.left:
+            counter += self.left.size() 
+        if self.right:
+            counter += self.right.size()
+        return counter
 
-    def insert(self, name_phone_dictionary: dict):
-        self.list.append(name_phone_dictionary)
+    def insert(self, number_phone_dict):
+        if self.phone_number:
+            node = BinarySeaerchTreePhoneBook(number_phone_dict)
+            if node.phone_number > self.phone_number:
+                if self.right is None:
+                    self.right = node
+                else:
+                    self.right.insert(number_phone_dict)
+            else:
+                if self.left is None:
+                    self.left = node
+                else:
+                    self.left.insert(number_phone_dict)
 
-    def find(self, name) -> int:
-        for item in self.list:
-            if item.get("name") == name:
-                return item.get("phoneNumber")
-        return -1
+    def find(self, name):
+        if name == self.name:
+            return self.phone_number
 
-
-def insert(root, key):
-    if key > root.key:
-        if root.right is None:
-            node = Node(key)
-            root.right = node
+        elif name > self.name:
+            if self.right is None:
+                return -1
+            else:
+                return self.right.find(name)     
         else:
-            insert(root.right, key)
-    else:
-        if root.left is None:
-            node = Node(key)
-            root.left = node
-        else:
-            insert(root.left, key)
+            if self.left is None:
+                return -1
+            else:
+                return self.left.find(name)
 
-def find(root, key):
-    if key == root.key:
-        return True
-
-    elif key > root.key:
-        if root.right is None:
-            return False
-        else:
-            return find(root.right, key)     
-    else:
-        if root.left is None:
-            return False
-        else:
-            return find(root.left, key)
-        
 
 if __name__ == "__main__":
-    phonebook = ListPhoneBook()
-    phonebook.insert({"name": "ABC", "phoneNumber": 1111111111})
-    phonebook.insert({"name": "XYZ", "phoneNumber": 9999999999})
-    phonebook.insert({"name": "DEF", "phoneNumber": 2222222222})
+    tree = BinarySeaerchTreePhoneBook({"name": "ABC", "phoneNumber": 1111111111})
+    tree.insert({"name": "XYZ", "phoneNumber": 9999999999})
+    tree.insert({"name": "DEF", "phoneNumber": 2222222222})
 
-    print(phonebook.find("ABC"))
-    print(phonebook.find("XYZ"))
-    print(phonebook.find("DEF"))
-    print(phonebook.find("PQR"))
+    print(tree.find("ABC"))
+    print(tree.size())

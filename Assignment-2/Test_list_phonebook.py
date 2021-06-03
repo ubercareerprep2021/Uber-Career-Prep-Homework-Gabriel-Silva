@@ -1,9 +1,10 @@
-import Binary_tree_phonebook as t, unittest
+import List_phonebook as t, unittest
 
 class TestPart1(unittest.TestCase):
 
     def test_binarytree_insert_ex1(self):
-        phonebook = t.BinarySeaerchTreePhoneBook({"name": "ABC", "phoneNumber": 1111111111})
+        phonebook = t.ListPhoneBook()
+        phonebook.insert({"name": "ABC", "phoneNumber": 1111111111})
         phonebook.insert({"name": "XYZ", "phoneNumber": 9999999999})
         phonebook.insert({"name": "DEF", "phoneNumber": 2222222222})
 
