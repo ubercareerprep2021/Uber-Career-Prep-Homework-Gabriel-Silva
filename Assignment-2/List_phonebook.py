@@ -1,10 +1,3 @@
-class Node:
-    def __init__(self, key):
-        self.key = key
-        self.left = None
-        self.right = None
-
-
 class ListPhoneBook:
     def __init__(self):
         self.list = list()
@@ -17,6 +10,8 @@ class ListPhoneBook:
 
     def find(self, name) -> int:
         for item in self.list:
+            # print("1 ", len(item.get("name")), item.get("name"))
+            # print("2 ", len(name), name)
             if item.get("name") == name:
                 return item.get("phoneNumber")
         return -1

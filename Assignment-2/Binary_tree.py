@@ -27,7 +27,7 @@ class BinaryTree:
             if self.right is None:
                 return False
             else:
-                return self.right.find(key)     
+                return self.right.find(key)                   
         else:
             if self.left is None:
                 return False
