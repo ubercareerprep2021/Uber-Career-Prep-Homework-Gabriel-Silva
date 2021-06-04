@@ -14,9 +14,11 @@ class BinarySeaerchTreePhoneBook:
         return counter
 
     def insert(self, number_phone_dict):
-        if self.phone_number:
+        if self.name:
             node = BinarySeaerchTreePhoneBook(number_phone_dict)
-            if node.phone_number > self.phone_number:
+            # print("1", self.name)
+            # print("2", node.name)
+            if node.name > self.name:
                 if self.right is None:
                     self.right = node
                 else:
@@ -28,6 +30,8 @@ class BinarySeaerchTreePhoneBook:
                     self.left.insert(number_phone_dict)
 
     def find(self, name):
+        # print("1 ", name, len(name))
+        # print("2 ", self.name, len(self.name))
         if name == self.name:
             return self.phone_number
 
