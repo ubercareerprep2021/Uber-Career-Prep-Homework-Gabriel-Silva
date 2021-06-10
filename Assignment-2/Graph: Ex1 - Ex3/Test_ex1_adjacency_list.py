@@ -45,8 +45,6 @@ class TestGraphEx1(unittest.TestCase):
         node_7 = t.GraphNode(7)
         node_2 = t.GraphNode(2)
         node_4 = t.GraphNode(4)
-        node_6 = t.GraphNode(6)
-        node_0 = t.GraphNode(0)
 
         graph.add_node(node_7)
         graph.add_node(node_2)
@@ -65,6 +63,21 @@ class TestGraphEx1(unittest.TestCase):
         self.assertEqual(len(graph.map[node_2]), 0)
         self.assertEqual(len(graph.map[node_4]), 0)
 
+
+    def test_get_adj_nodes(self):
+        graph  = t.GraphWithAdjacencyList()
+        node_7 = t.GraphNode(7)
+        node_2 = t.GraphNode(2)
+        node_4 = t.GraphNode(4)
+
+        graph.add_node(node_7)
+        graph.add_node(node_2)
+        graph.add_node(node_4)
+        graph.add_edge(node_7, node_2)
+        graph.add_edge(node_7, node_4)
+        graph.add_edge(node_2, node_4)
+        self.assertEqual(graph.get_adj_nodes(node_2), [node_7, node_4])
+        self.assertEqual(graph.get_adj_nodes(node_7), [node_2, node_4])
 
 if __name__ == '__main__':
     unittest.main()

@@ -20,11 +20,14 @@ class GraphWithAdjacencyList:
         self.map[node_2].append(node_1)
 
     def remove_edge(self, node_1: GraphNode, node_2: GraphNode):
-        """ since it's an undirected graph, both nodes were added to
+        """ since it's an undirected graph, both nodes were removed from
             each others list """
         self.map[node_1].remove(node_2)
         self.map[node_2].remove(node_1)
 
+    def get_adj_nodes(self, node: GraphNode):
+        return self.map[node]
+        
 
 if __name__ == "__main__":
     graph = GraphWithAdjacencyList()
@@ -37,21 +40,14 @@ if __name__ == "__main__":
     graph.add_node(node_7)
     graph.add_node(node_2)
     graph.add_node(node_4)
-
     graph.add_node(node_6)
     graph.add_node(node_0)
+
     graph.add_edge(node_7, node_2)
     graph.add_edge(node_7, node_4)
-    # graph.add_edge(node_2, node_4)
-    # graph.add_edge(node_2, node_0)
-    # graph.add_edge(node_6, node_4)
-    # graph.add_edge(node_6, node_0)
-    print("graph 7", graph.map[node_7])
-    print("graph 2", graph.map[node_2])
-    graph.remove_edge(node_7, node_2)
-    print("graph 7", graph.map[node_7])
-    print("graph 2", graph.map[node_2])
-    print("graph 4", graph.map[node_4])
-    graph.remove_edge(node_7, node_4)
-    print("graph 7", graph.map[node_7])
-    print("graph 4", graph.map[node_4])
+    graph.add_edge(node_2, node_4)
+    graph.add_edge(node_2, node_0)
+    graph.add_edge(node_6, node_4)
+    graph.add_edge(node_6, node_0)
+    
+    print(graph.get_adj_nodes(node_7))
