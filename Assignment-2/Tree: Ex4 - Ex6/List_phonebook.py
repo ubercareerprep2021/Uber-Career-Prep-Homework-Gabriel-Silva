@@ -10,8 +10,6 @@ class ListPhoneBook:
 
     def find(self, name) -> int:
         for item in self.list:
-            # print("1 ", len(item.get("name")), item.get("name"))
-            # print("2 ", len(name), name)
             if item.get("name") == name:
                 return item.get("phoneNumber")
         return -1
