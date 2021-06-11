@@ -4,19 +4,13 @@ import csv, time
 def insert_list() -> list:
     start_time = time.time()
     first_node = True
-    with open('/home/gabriel/Repositories/Uber-Career-Prep-Homework-Gabriel-Silva/Assignment-2/data.csv', 'r') as file:
+    with open('/home/gabriel/Repositories/Uber-Career-Prep-Homework-Gabriel-Silva/Assignment-2/Tree: Ex4 - Ex6/data.csv', 'r') as file:
         all_phone = csv.reader(file)
         phone_dict = {}
         for row in all_phone:
             phone_dict = {}
             phone_dict['name'] = row[0]
             phone_dict['phoneNumber'] = int(row[1])
-            # print("AAAAAAAAAAAA\n")
-            # print("AAAAAAAAAAAA\n")
-            # print("AAAAAAAAAAAA\n")
-            # print("AAAAAAAAAAAA\n")
-            # print("AAAAAAAAAAAA\n")
-            # print(time.time() - start_time)
             if first_node:
                 phonebook = tree_phonebook.BinarySeaerchTreePhoneBook(phone_dict)
                 first_node = False
@@ -34,7 +28,7 @@ def insert_list() -> list:
 def find(phonebook):
     start_time = time.time()    
     find_counter = 0
-    with open('/home/gabriel/Repositories/Uber-Career-Prep-Homework-Gabriel-Silva/Assignment-2/search.csv', mode='r') as search_file:
+    with open('/home/gabriel/Repositories/Uber-Career-Prep-Homework-Gabriel-Silva/Assignment-2/Tree: Ex4 - Ex6/search.csv', mode='r') as search_file:
         search = csv.reader(search_file)
         for row in search:
             phone = phonebook.find(row[0])

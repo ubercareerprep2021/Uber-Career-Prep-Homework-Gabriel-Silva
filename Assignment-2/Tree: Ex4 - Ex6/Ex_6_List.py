@@ -1,11 +1,10 @@
-import Binary_tree_phonebook as tree_phonebook
 import List_phonebook as list_phonebook
 import csv, time
 
 def insert_list() -> list:
     start_time = time.time()
     phonebook = list_phonebook.ListPhoneBook()
-    with open('/home/gabriel/Repositories/Uber-Career-Prep-Homework-Gabriel-Silva/Assignment-2/data.csv', 'r') as file:
+    with open('/home/gabriel/Repositories/Uber-Career-Prep-Homework-Gabriel-Silva/Assignment-2/Tree: Ex4 - Ex6/data.csv', 'r') as file:
         all_phone = csv.reader(file)
         phone_dict = {}
         for row in all_phone:
@@ -25,7 +24,7 @@ def insert_list() -> list:
 def find(phonebook):
     start_time = time.time()    
     find_counter = 0
-    with open('/home/gabriel/Repositories/Uber-Career-Prep-Homework-Gabriel-Silva/Assignment-2/search.csv', mode='r') as search_file:
+    with open('/home/gabriel/Repositories/Uber-Career-Prep-Homework-Gabriel-Silva/Assignment-2/Tree: Ex4 - Ex6/search.csv', mode='r') as search_file:
         search = csv.reader(search_file)
         for row in search:
             phone = phonebook.find(row[0])
