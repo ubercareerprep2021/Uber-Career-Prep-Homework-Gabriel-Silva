@@ -2,7 +2,7 @@
 class GraphNode:
     def __init__(self, data):
         self.data = data
-        self.visited_node = False
+        #self.visited_node = False
 
 
 class GraphWithAdjacencyList:
@@ -30,12 +30,14 @@ class GraphWithAdjacencyList:
     def get_adj_nodes(self, node: GraphNode):
         return self.map[node]
 
-    def depth_first_search(self, node: GraphNode):
+    def depth_first_search(self, node: GraphNode, check_dict: dict):
         print(node.data)
-        node.visited_node = True
+        #insert node on dictionary to check if node has been visited
+        check_dict[node] = True
         for close_item in self.map[node]:
-            if close_item.visited_node is False:
-                self.depth_first_search(close_item)
+            #if node hasn't been visited, go into recursion
+            if check_dict.get(close_item) is None:
+                self.depth_first_search(close_item, check_dict)
         return
         
 
@@ -70,5 +72,5 @@ if __name__ == "__main__":
     
     # graph.add_edge() order matters on DFS
     # result 7 2 0 10 20 30 6 4
-    graph.depth_first_search(node_7)
+    graph.depth_first_search(node_7, {})
 

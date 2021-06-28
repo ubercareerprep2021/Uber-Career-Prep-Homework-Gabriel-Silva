@@ -1,10 +1,6 @@
-# added visited node parameter to check if node has been visited 
-# added prited node parameter to check if node has been printed
 class GraphNode:
     def __init__(self, data):
         self.data = data
-        self.visited_node = False
-        self.printed_node = False
 
 
 class GraphWithAdjacencyList:
@@ -32,23 +28,23 @@ class GraphWithAdjacencyList:
     def get_adj_nodes(self, node: GraphNode):
         return self.map[node]
 
-    def breadth_first_search(self, node: GraphNode):
-        # mark node as visited since this function is called only on unvisited nodes
-        node.visited_node = True
-        # print node if not printed
-        if node.printed_node is False: 
+    def breadth_first_search(self, node: GraphNode, printed_dict: dict, visited_dict: dict):
+        # put node in visited dict since this function is called only on unvisited nodes
+        visited_dict[node] = True
+        # print node if hasn't been printed
+        if printed_dict.get(node) is None: 
             print(node.data)
-            node.printed_node = True
+            printed_dict[node] = True
         # print adjacent nodes if not printed
         for close_item in self.map[node]:
-            if close_item.printed_node is False:
+            if printed_dict.get(close_item) is None:
                 print(close_item.data)
-                close_item.printed_node = True
+                printed_dict[close_item] = True
         
         # call recursion on unvisited adjacent nodes to print their unprinted adjacent nodes
         for close_item in self.map[node]:
-            if close_item.visited_node is False:
-                self.breadth_first_search(close_item)
+            if visited_dict.get(close_item) is None:
+                self.breadth_first_search(close_item, printed_dict, visited_dict)
         return
         
 
@@ -83,5 +79,5 @@ if __name__ == "__main__":
     
     # graph.add_edge() order matters on DFS
     # result 7 2 4 0 10 6 20 30
-    graph.breadth_first_search(node_7)
+    graph.breadth_first_search(node_7, {}, {})
 
