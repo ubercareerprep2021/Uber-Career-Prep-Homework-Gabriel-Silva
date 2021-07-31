@@ -7,7 +7,7 @@ def insertion_sort(array: list):
         # get index before i
         j = i-1
         # while it's not in the 0 index and key value is 
-        # less than lower index values
+        # less than lower index positions
         while j >= 0 and key < array[j] :
             # shift right the value on index j
             array[j + 1] = array[j]
