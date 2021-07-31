@@ -17,3 +17,4 @@ def insertion_sort(array: list):
         array[j + 1] = key
     
     return array
+
