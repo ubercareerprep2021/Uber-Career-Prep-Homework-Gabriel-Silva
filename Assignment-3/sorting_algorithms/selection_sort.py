@@ -3,8 +3,6 @@ def selection_sort(array: list):
         and replaces at the correct order """
     # traverse through all array elements
     for i in range(len(array)): 
-        # find the minimum element in remaining
-        # unsorted array
         min_index = i
         # find the minimum element in remaining
         # unsorted array
