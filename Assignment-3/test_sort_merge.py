@@ -6,6 +6,7 @@ class Insertion_sort(unittest.TestCase):
     list_sorted_3 = [-12,40,50,60,70,80,900]
     list_sorted_4 = [-9,-7,-5,-3,-1,0,1,3,5,7,9]
     list_sorted_5 = [-10,-8,-6,-4,-2,0,2,4,6,8,10]
+    list_sorted_6 = []
     
     merge_sorted_1_2 = [-535,-44,1,2,3,4,5,13,21,123,1000]
     merge_sorted_2_3 = [-535,-44,-12,13,21,40,50,60,70,80,123,900,1000]
@@ -26,6 +27,9 @@ class Insertion_sort(unittest.TestCase):
         self.assertEqual(self.merge_sorted_1_5, ex3_sorted_merge.sorted_merge(self.list_sorted_5, self.list_sorted_1))
         self.assertEqual(self.merge_sorted_1_4, ex3_sorted_merge.sorted_merge(self.list_sorted_1, self.list_sorted_4))
         self.assertEqual(self.merge_sorted_1_4, ex3_sorted_merge.sorted_merge(self.list_sorted_4, self.list_sorted_1))
+        self.assertEqual(self.list_sorted_1, ex3_sorted_merge.sorted_merge(self.list_sorted_6, self.list_sorted_1))
+        self.assertEqual(self.list_sorted_1, ex3_sorted_merge.sorted_merge(self.list_sorted_1, self.list_sorted_6))
+        self.assertEqual(self.list_sorted_6, ex3_sorted_merge.sorted_merge(self.list_sorted_6, self.list_sorted_6))
 
     
 if __name__ == '__main__':
